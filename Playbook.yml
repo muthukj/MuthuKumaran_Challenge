@@ -1,0 +1,19 @@
+---
+
+- name: Playbook for WS
+  hosts: PrivateIP
+  
+  gather_facts: False
+
+  environment:
+    PATH: "/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin"
+    
+  vars_files:
+    - vars.yml
+
+  roles:
+        - { role:  }
+        - { role:  }
+        
+        
+    #- { role: purge-assets }
