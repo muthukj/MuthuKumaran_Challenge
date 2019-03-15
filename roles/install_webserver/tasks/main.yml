@@ -1,1 +1,20 @@
-Test
+---
+  - name: Install apache
+    yum: name=httpd state=installed
+
+  - name: Install mod_ssl
+    yum: name=mod_ssl state=installed
+
+  - name: ensure httpd is running
+    service:
+      name: httpd 
+      state: started
+  - name: (Enable it on System Boot)
+    service: name=httpd enabled=yes
+    notify:
+      - start apache
+    handlers:
+      - name: start apache
+    service: name=httpd state=started
+  - name: clone basic html template
+    git: repo=https://github.com/ dest=/var/www/index.html update=no
